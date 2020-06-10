@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Pluralsight_LINQ_Fundamentals
+{
+    class LINQ
+    {
+    Welche Datasources kannst du mit einer einheitlichen API und Syntax namens LINQ manipulieren bzw. abfragen? (Vor C# brauchte man z.B. Ado.Net mit seiner speziellen Syntax um SQL abzufragen. )
+    LINQ kann gegen 
+    - Object Data
+    - Relationale Data (SQL)
+    - XML Data
+    - JSON
+    - Datei System
+    - CSV Dateien
+    - Mongo DB
+    - etc.
+    stark typisiert ausgeführt werden.
+
+
+    }
+}

@@ -1,0 +1,93 @@
+﻿a) Warum kannst du z.B. mit einer foreach Schleife, sowohl 
+über ein Array<T> als auch über eine List<T> iterieren?
+
+ -> Beide Typen implementieren implizit die Schnittstelle 
+    IEnumerable<T>.
+    
+b) Welche spezielle Methode besitzen sowohl ein Array<T> als 
+auch eine List<T> und durch welche Schnittstelle wird diese Methode bereitgestellt.
+
+IEnumerable<T> sorgt dafür dass beide Collections über die Methode
+GetEnumerator() verfügen.
+
+c) LINQ basiert großteils auf zwei Schnittstellen um seine Query Funktionalität zu gewährleisten. Nenne eine.
+- IEnumerable<T>
+
+d) Mit welchem Shortcut öffnest du die MetadataView (go to definition) einer Klasse (z.B. List)?
+- Cursor über das Keyword (List) und F12 Taste drücken.
+
+e) Welches Fenster öffnest du wenn du mit F12 auf das gehighlighte keyword "List" drückst?
+- du öffnest die MetadataView der List-Klasse. (go to definition)
+
+f) Ist dies eine gültige Deklarierung als IEnumerable des sales Objekts und kannst du über dieses Objekt mit foreach iterieren?
+            IEnumerable<Employee> sales = new List<Employee>
+            {
+                new Employee{Id=3,Name="Alex"}
+            };
+
+- ja, du kannst die Instanz als IEnumerable<T> deklarieren.
+- ja, über alle Objekte die IEnumerable<T> implementieren kann iteriert werden.
+
+g) Warum kannst du im Beispiel f) über das Objekt iterieren? 
+IEnumerable<T> stellt die Methode GetEnumerator() bereit. 
+
+f) Wahr oder falsch: Eine List<T> Instanz ist ist immer ein IEnumerable Objekt?
+- wahr: List<T> Objekte implementieren immer u.a. auch implizit die Schnittstelle IEnumerable<T> und sind daher u.a. auch vom Typ IEnumerable<T>.
+Objekte die IEnumerable<T> implementieren stehen in einer is-a Beziehung zu IEnumerable<T>.
+
+g) Objekte, die IEnumerable<T> implementieren besitzen die Methode GetEnumerator. Was hat diese Methode als Rückgabewert und was kann damit gemacht werden?
+GetEnumerator() gibt ein Enumerator-Objekt zurück, welches über eine Collection iterieren kann.
+
+h) Schreibe Code: 
+Iteriere über diese Collection mit Hilfe eines Enumerator<T> Objekts
+und gebe den Namen der Emploeyees an der Konsole aus:
+
+            IEnumerable<Employee> developers = new Employee[]
+            {
+                new Employee{Id = 1, Name = "Scott"},
+                new Employee{Id = 2, Name = "Chris"}
+            };
+
+
+- Antwortcode:
+            IEnumerator<Employee> enumerator = developers.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine(enumerator.Current.Name);
+            }
+
+
+i) Warum macht LINQ so mächtig gebrauch von der IEnumerable<T> Schnittstelle?
+
+- LINQ macht davon mächtig gebrauch in seiner Querysyntax und versteckt jede Art von Datenstruktur oder Datenoperation unabhängig von der Quelle durch die GetEnumerator Methode der IEnumerator-Schnittstelle.
+Daraus resultiert eine einheitliche API mit der du Datenquellen jeder Art manipulieren kannst, sei es ein Webserviceaufruf um mit jeder Enumerator.MoveNext() Iteration einen Datensatz abzurufen oder ein ListObjekt zu manipulieren oder eine
+Pointer Tree abzufragen usw usf.
+
+j) Welche Methoden stellt IEnumerable<T> neben GetEnumerator() noch bereit?
+
+- Keine weitere! Die IEnumerable<T> Schnittstelle stellt ausschließlich GetEnumerator() bereit. 
+
+k) Wahr oder Falsch: LINQ's Filtering, Sorting, Aggregating Fähigkeiten werden durch IEnumerable<T> bereitgestellt?
+- Falsch! Die IEnumerableSchnittstelle stellt nur eine GetEnumerator Methode bereit um ein Enumerator Objekt zu erschaffen
+um damit über jede beliebige Collection oder Sequenz zu iterieren. 
+
+l) Durch welche Technik wird ein Großteil der Sorting, Aggregating, Filtering Funktionalität von LINQ sichergestellt, wenn Methoden für diese Operationen nicht in
+der IEnumerable<T> Schnittstelle angelegt sind?
+- LINQ macht starken Gebrauch von ExtensionMethods, die diese Funktionalität bereitstellen und gegen die IEnumerable<T>-Schnittstelle ausgeführt werden können.
+
+m) Nenne Gründe warum Extension Methods für filtering, sorting, aggregating nicht direkt durch die IEnumerable<T> Schnittstelle bereitgestellt werden.
+- IEnumerable<T> ist so eine grundlegende Schnittstelle, die nur eine mächtige Basisfunktionalität bereitstellen soll: das Iterieren über und das Abstrahieren
+jedweder Collection oder Datasource.
+- Eine Schnittstelle die all die verschiedenen Datenoperationen auf einmal bereitstelle wäre sehr schwer von ableitenden Klassen zu implementieren. Diese schlanke
+Funktionalität ist bedeutend bei einer so grundledenden Schnittstelle wie IEnumerable<T>
+- Würde IEnumerable<T> nun additionale Funktionalität hinzüfügen, würde es bereits existierenden Code brechen.
+
+n) Welche Technik erlaubt dir verschiedenste Methoden gegen Typen zu verwenden (wie es z.B. LINQ macht) ohne dabei den zugrunde liegenden Tpen zu ändern (ohne dass dieser
+Typ dieses Verhalten implementieren muss)?
+- Die Technik namens Extensionmethods.
+
+o) Anstatt das Interface IEnumerable<T> selbst zu ändern, können wir das Interface mit dieser Technik erweitern.
+- Extension Methods
+
+

@@ -1,0 +1,22 @@
+﻿Früher gab es verschiedene Technologien, APIs mit unterschiedlicher Syntax um Daten zu behandeln in C#. z.B. ADO.Net für SQL Database.
+Welche Daten kannst du abfragen bzw. manipulieren mit einer einheitlichen Syntax und API namens LINQ? 
+
+Es können mit LINQ sowohl Daten im Speicher
+als auch Daten in einer Datenbank abgefragt bzw. manipuliert werden. Zum Beispiel:
+Objects
+XML
+SQL
+JSON
+MONGO DB
+...
+
+
+Mit welchen zwei Techniken kannst du LINQ verwenden?
+- Querysyntax und 
+
+Auf welchen zwei C# Techniken baut LINQ auf und sind daher zu erlernen unverzichtlich um LINQ zu meistern?
+- Extension Methods
+- Lambda Expression
+
+
+

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Favorites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <folders />
+  <favorites>
+    <Favorite>
+      <name>Program.cs</name>
+      <path>Pluralsight LINQ Fundamentals\Program.cs</path>
+      <absolutePath>C:\LocalGitRepository\Pluralsight LINQ Fundamentals\Pluralsight LINQ Fundamentals\Program.cs</absolutePath>
+      <position>
+        <line>31</line>
+        <column>6</column>
+        <lineHash>Z9muQE1OiSQyXdIgcvfIFx+4y3V52tR8FKfUBCmQWxw=</lineHash>
+      </position>
+    </Favorite>
+  </favorites>
+</Favorites>
