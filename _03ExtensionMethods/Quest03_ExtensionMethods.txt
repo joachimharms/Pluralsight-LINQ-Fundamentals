@@ -1,0 +1,58 @@
+﻿a) Was sind Extension Methods
+- Extension Methods sind statische Methoden, die aber wie ein Member eines anderen Typen erscheinen.
+	Sie können auf eine Instanz des erweiterten Typen direkt aufgerufen werden.
+	z.B. Erweiterung von der string Klasse um eine ToDouble() Extension Methode lässt sich so aufrufen:
+
+	string myString = "123";
+	myString.ToDouble();  
+	
+	// Die Exension Methode erscheint wie ein Member der Klasse string ist aber in 
+	einer anderen statischen Extension Klasse angelegt. Es handelt sich um einen Aufruf einer statischen Methode
+	aber per Instanz Syntax.
+
+
+b) Welche Typen können durch Extension Methods erweitert werden?
+- Jeder Typ Klassen, Interfaces, structs, sogar sealed types die wir durch Vererbung eigentlich nicht
+erweitern können.
+
+c) Wie unterscheidet sich eine Extension Method von einer normalen statischen Methode?
+- Durch das keyword "this", welches als erster Methodenparameter übergeben wird.
+
+d) Was ist wichtig bei der Deklarierung einer Extension Method in Bezug auf die Parameterklasse?
+- das keyword this steht immer an erster Stelle der Parameter
+- gefolgt von dem Typen der erweitert werden soll. (aber nicht getrennt durch ein Komma, sondern eine Kombination von this und direkt den zu erweiternen Typen.)
+- danach können beliebig weitere Parameter folgen.
+
+e) Gebe ein Beispiel für eine Methodendeklarierung die den Typen String durch eine Methode ToDouble() erweitert.
+-	static public double ToDouble(this string data)
+	{
+		double result = double.Parse(data);
+		return result;
+	}
+
+f) Nenne ein Beispiel wie LINQ Extension Methods verwendet?
+- LINQ verwendet sehr viele Extension Methods um z.B. das Interface IEnumerable<T> 
+mächtig zu erweitern für Querysnytax, Methoden zum Filtern, Sortieren, Aggregatieren, LINQ Operatoren.
+
+g)Was fehlt dieser Extension Methode der IEnumerable<T> Schnittstelle damit sie wirklich generisch ist und kompilierbar ist:
+
+public static int Count(IEnumerable<T> sequence)
+{
+	int counter = 0;
+	//...
+	return counter;
+}
+
+- Ihr fehlt der generische Typeoperator <T> damit sie wirklich generisch ist. Der Typeoperator <T> wird dem Methodenbezeichner angehängt:
+
+public static int Count<T>(IEnumerable<T> sequence)
+{
+	int counter = 0;
+	//...
+	return counter;
+}
+
+
+g) Welche Technik ist sehr hilfreich bei der Programmierung mit LINQ:
+- Generics. Das Verständnis von Generics erleichtert die Programmierung mit LINQ.
+

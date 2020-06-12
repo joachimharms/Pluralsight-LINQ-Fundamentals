@@ -1,7 +1,10 @@
-﻿using System;
+﻿using _03_ExtensionMethods;
+using System;
 using System.Collections.Generic;
 
-namespace _03_ExtensionMethods
+//using System.Linq;
+
+namespace Playground03
 {
     internal class Program
     {
@@ -20,8 +23,10 @@ namespace _03_ExtensionMethods
 
             // Stell dir vor LINQ würde keinen eigenen Count Operator haben und du müsstest deinen eigenen Count Operator
             // für IEnumerable<T> schreiben:
-            //Console.WriteLine(MyLinq.Count(developers));
-            Console.WriteLine(sales.Count()); // Würde der LINQ Namespace oben wieder einkommentiert, würde der Operator für die IEnumerable Schnittstelle wieder funktionieren.
+            Console.WriteLine(ExtensionMethods.Count(developers));
+            Console.WriteLine(developers.Count());
+
+            //Console.WriteLine(sales.Count()); // Würde der LINQ Namespace oben wieder einkommentiert, würde der Operator für die IEnumerable Schnittstelle wieder funktionieren.
 
             IEnumerator<Employee> enumerator = developers.GetEnumerator();
 
