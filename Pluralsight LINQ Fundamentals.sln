@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground02", "Playground0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground03", "Playground03\Playground03.csproj", "{C15B168F-D31C-4A6D-8BF9-2F79E6690D60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_05_LambdaExpressions", "_05LambdaExpressions\_05_LambdaExpressions.csproj", "{81FA0F46-D231-4BA1-8636-28D7FECA6890}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C15B168F-D31C-4A6D-8BF9-2F79E6690D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C15B168F-D31C-4A6D-8BF9-2F79E6690D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C15B168F-D31C-4A6D-8BF9-2F79E6690D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81FA0F46-D231-4BA1-8636-28D7FECA6890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81FA0F46-D231-4BA1-8636-28D7FECA6890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81FA0F46-D231-4BA1-8636-28D7FECA6890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81FA0F46-D231-4BA1-8636-28D7FECA6890}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

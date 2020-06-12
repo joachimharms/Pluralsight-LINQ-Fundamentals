@@ -56,3 +56,46 @@ public static int Count<T>(IEnumerable<T> sequence)
 g) Welche Technik ist sehr hilfreich bei der Programmierung mit LINQ:
 - Generics. Das Verständnis von Generics erleichtert die Programmierung mit LINQ.
 
+h) Auf welche Weise und an welchen Stellen kannst du diese Extension Methode Count() der statischen Klasse MyLinq aufrufen?
+		
+		public static class MyLinq
+		{
+			public static int Count<T>(this IEnumerable<T> sequence)
+			{
+				int counter = 0;
+				foreach (var item in sequence)
+				{
+					counter++;
+				}
+				return counter;
+			}
+		}
+
+- 1.) Du kannst diese Extension Methode ganz normal statisch über ihren Klassennamen aufrufen:
+
+	IEnumerable<Employee> myList = new List<Employee>{
+	new Employee{Id = 4, Name = "Tim"};
+	};
+	MyLinq.Count(myList);
+
+- 2.) Oder als ExtensionMethode gegen alle Objekte die IEnumerable<T> implementieren! 
+
+	myList.Count();
+
+
+i) Wie unterscheidet sich grafisch, symbolisch deine selbstkreierte Extension Methode von einer normalen Methode?
+- Deine selbstkreierte Extension Method hat als Symbol ein kleines Kästchen mit einem Pfeil nach unten.
+
+j) Kannst du custom Extension Methods für die sealed class string schreiben?
+- ja natürlich du kannst sogar die sealed String Klasse erweitern.
+
+k) Damit deine custom Extension Method durch jeden Typen aufgerufen werden kann, solltest du diese Klasse erweitern:
+- System.Object. Da alles von System.Object ableitet kannst du mit einer custom Extension Method System.Object erweitern
+und die Methode erscheint dann in Intellisense als Vorschlag für jeden Typen.
+
+l) In Bezug auf Namespaces ist was wichtig bei der Verwendung von Extension Methods?
+Du musst natürlich den Namespace per using Direktive hinzufügen in welcher die Extension Method lebt.
+
+m) IEnumerable liefert nur die Methode GetEnumerator() um IEnumerable um LINQ Fähigkeiten zu erweitern 
+musst du was machen?
+- den namespace System.Linq als using Direktive einbinden.
