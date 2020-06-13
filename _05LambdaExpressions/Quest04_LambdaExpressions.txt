@@ -1,2 +1,115 @@
 ﻿a) Was ist der built-in Filtering Operator in LINQ?
 - die Where Methode ist zum Filtern der Daten.
+
+b) Kannst du die LINQ Extension Methode Where hier auf diese Weise verwenden?
+
+        IEnumerable<string> filteredList =
+                cities.Where(StartsWithL);
+
+        public bool StartsWithL(string name)
+        {
+            return name.StartsWith('L');
+        }
+
+c) Die LINQ extension method where macht was?
+- Die Methode weiß zu filtern auf generische Weise.
+- Die Methode weiß nicht exakt wie gefiltert werden soll,
+das Filtern wird spezifiziert durch die Übergabe eines Objekts
+an die Where() Methode. (Siehe Beispiel b).
+
+
+d) Erkläre das Verhalten des Where Operators in diesem Filtering Beispiel:
+
+        IEnumerable<string> filteredList =
+                cities.Where(StartsWithL);
+
+        public bool StartsWithL(string name)
+        {
+            return name.StartsWith('L');
+        }
+
+- Der Where Operator evaluiert für jeden String ob sie nach Aufruf der named Methode StartsWithL,
+diesen String dem gefilerten String Array hinzufügt. Der Where Operator schaut sich den
+Rückgabewert der Methode StartsWithL für jeden String in Liste an und entscheidet dann ob sie 
+den Wert des Strings hinzufügt.
+
+
+e) Der Aufruf einer named Methode wie in diesem Beispiel der Aufruf der StartsWithL Methode
+hat welche Nachteile in Bezug auf das Filtering mittels Where Operator?
+
+IEnumerable<string> filteredList =
+                cities.Where(StartsWithL);
+
+        public bool StartsWithL(string name)
+        {
+            return name.StartsWith('L');
+        }
+
+1.) Nenne die Nachteile durch das Filtern mittels Where und Aufruf einer named Method.
+2.) Statt einer named Methode wird das Filtern mittels Where gerne mit dieser Technik gemacht um die
+Nachteile zu umgehen.
+
+- 1.) Es wird sehr aufwendig um für jede mögliche Sorting Funktion eine eigene benannte Methode zu generieren.
+- 2.) Stattdessen wurden gerne anonyme Methoden mittels Delegate verwendet.
+      Die anonyme Methode wird komplett InLine definiert beim Aufruf von Where.
+
+
+f) Schreibe diesen Methodenaufruf mit der anonymen Methoden Technik mittels delegate:
+
+IEnumerable<string> filteredList =
+                cities.Where(StartsWithL);
+
+- IEnumerable<string> filteredList =
+                cities.Where(delegate(string s)
+                  {return s.StartsWith("L"); });
+
+g) Was ist wiederum der Nachteil dieser Technik mittels anonymer Methoden zu filtern und welche Syntax wurde
+als Alternative entwickelt?
+
+- Die Syntax ist furchtbar umständlich und häßlich. (Die extra Curly Braces, der return Wert, das Delegate keyword)
+ist alles nur schwer zu verstehen und nicht einfach zu lesen. Das ist auch der 
+Grund warum die C# Entwickler dazu übergegangen sind die Lambda-Expression Syntax zu entwickeln
+und für Linq Filtering zu verwenden.
+
+
+h) Schreibe diesen Code mit anonymer Methode auf verständliche Weise mit
+Lambda-Expression Syntax (Lamba-Expression Syntax hat nur eine andere Syntax, ansonsten 
+funktioniert Code mit Lamda-Expression Syntax genau so wie der Aufruf dieser anonymen Methode:
+
+IEnumerable<string> filteredList =
+                cities.Where(delegate(string s)
+                  {return s.StartsWith("L"); });
+
+Lambda-Ausdruck:
+- IEnumberable<string> filteredList =
+                cities.Where(s => s.StartsWith("L"));
+
+
+i) Beschränkt sich die Verwendung von Lamda Ausdrücken auschließlich auf LINQ?
+
+- Nein Lambda-Ausdrücke sind sehr nützlich beim Schreiben vom alltäglichen Code,
+wenn man sich erstmal an die ungewöhnliche Syntax gewöhnt hat, möchte man
+Lamda-Ausdrücke nicht mehr missen, da sie leicht zu verstehen sind und zu schreibenden Code
+reduzieren, bei sehr großer Mächtigkeit.
+
+j) Stelle noch mal alle drei Techniken mit Code gegenüber um mittels
+Where Operator über eine Collection von IEnumarable<T> alle Städte mit 
+Anfangsbuchstaben "L" zu filtern.
+
+- Where Filtering mittels benannter Methode:
+
+IEnumerable<string> filteredList =
+                cities.Where(StartsWithL);
+
+
+- Where Filtering mittels anonymer Methode:
+
+IEnumerable<string> filteredList =
+                cities.Where(delegate(string s)
+                  {return s.StartsWith("L"); });
+
+
+- Where Filtering mittels Lamda-Ausdruck:
+
+- IEnumberable<string> filteredList =
+    cities.Where(s => s.StartsWith("L"));
