@@ -1,0 +1,2 @@
+﻿a) Was ist der built-in Filtering Operator in LINQ?
+- die Where Methode ist zum Filtern der Daten.

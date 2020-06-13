@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -39,14 +37,6 @@ namespace Playground01
             {
                 Console.WriteLine($"{files[i].Name} : {files[i].Length}");
             }
-        }
-    }
-
-    public class FileComparer : IComparer<FileInfo>
-    {
-        public int Compare(FileInfo x, FileInfo y)
-        {
-            return y.Length.CompareTo(x.Length);
         }
     }
 }

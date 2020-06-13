@@ -11,6 +11,7 @@ namespace _03_ExtensionMethods
             {
                 counter++;
             }
+
             return counter;
         }
     }

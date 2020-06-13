@@ -2,25 +2,31 @@
 
 namespace Playground02
 {
-    internal class Program
+    /// <summary>
+    /// Hauptprogramm der Anwendung.
+    /// </summary>
+    public class Program
     {
+        /// <summary>
+        /// Hauptmethode der Anwendung.
+        /// </summary>
+        /// <param name="args">Default implementation</param>
         private static void Main(string[] args)
         {
-            //Employee[] developers = new Employee[]
-            //{
+            // Employee[] developers = new Employee[]
+            // {
             //    new Employee{ Name = "Tarzan", Id="1" },
             //    new Employee { Name = "Tina", Id = "2" }
-            //};
-
+            // };
             IEnumerable<Employee> developers = new Employee[]
             {
-                new Employee{ Name = "Tarzan", Id="1" },
-                new Employee { Name = "Tina", Id = "2" }
+                new Employee { Name = "Tarzan", Id = "1" },
+                new Employee { Name = "Tina", Id = "2" },
             };
 
             IEnumerable<Employee> workers = new List<Employee>
             {
-                new Employee{Name="Dorothea", Id="3"}
+                new Employee { Name = "Dorothea", Id = "3" }
             };
 
             foreach (var developer in developers)
@@ -45,11 +51,5 @@ namespace Playground02
                 System.Console.WriteLine();
             }
         }
-    }
-
-    public class Employee
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
     }
 }

@@ -1,10 +1,10 @@
-﻿using _03_ExtensionMethods;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Playground03
 {
+    /// <summary>
+    /// Class for holding extension methods against IEnumerable types.
+    /// </summary>
     public static class ExtensionMethods
     {
         public static int Count<T>(this IEnumerable<T> sequence)

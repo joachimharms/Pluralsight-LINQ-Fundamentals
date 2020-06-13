@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace Pluralsight_LINQ_Fundamentals
+﻿namespace Pluralsight_LINQ_Fundamentals
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+
+    /// <summary>
+    /// Main program of application.
+    /// </summary>
     internal class Program
     {
         private static void Main(string[] args)
@@ -18,7 +20,7 @@ namespace Pluralsight_LINQ_Fundamentals
         private static void ShowLargeFilesWithLinq(string path)
         {
             //// 1. Technik Query Syntax:
-            //var query = from file in new DirectoryInfo(path).GetFiles()
+            // var query = from file in new DirectoryInfo(path).GetFiles()
             //            orderby file.Length descending
             //            select file;
 
@@ -42,7 +44,7 @@ namespace Pluralsight_LINQ_Fundamentals
                          where file.Length > 1
                          select file;
 
-            //Console.WriteLine(result[1].Name);
+            // Console.WriteLine(result[1].Name);
         }
 
         private static void ShowLargeFilesWithoutLinq(string path)
@@ -56,14 +58,6 @@ namespace Pluralsight_LINQ_Fundamentals
             {
                 Console.WriteLine($"{files[i].Name,20} : {files[i].Length,10:N0}");
             }
-        }
-    }
-
-    public class FileComparer : IComparer<FileInfo>
-    {
-        int IComparer<FileInfo>.Compare(FileInfo x, FileInfo y)
-        {
-            return y.Length.CompareTo(x.Length);
         }
     }
 }
