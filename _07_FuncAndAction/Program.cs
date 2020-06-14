@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace _07_FuncAndAction
 {
@@ -60,6 +62,19 @@ namespace _07_FuncAndAction
 
             // Kombination aus ein Action und zwei Func Delegaten:
             write(square(add(3, 5)));
+
+            //// ***Teil 3***
+            foreach (var developer in developers)
+            {
+                Console.WriteLine(developer.Name);
+            }
+
+            // Für einen Report brauchen wir die Namen aller Developer deren Namen aus fünf Buchstaben besteht in alphabetischer Reihenfolge.
+            foreach (var developer in developers.Where(e => e.Name.Length == 5)
+                                                 .OrderBy(e => e.Name))
+            {
+                Console.WriteLine(developer.Name);
+            }
         }
 
         private static int Square(int arg)

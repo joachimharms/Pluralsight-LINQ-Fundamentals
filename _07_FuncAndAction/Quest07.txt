@@ -133,3 +133,25 @@ Ergebnis an der Konsole auszugeben.
 - 
 write(square(add(3, 6)));
 
+
+v) Für einen Report brauchen wir die Namen aller Developer deren Namen aus fünf Buchstaben besteht in alphabetischer Reihenfolge. Schreibe 
+die Abfrage inklusive Filtern und Sortieren mit Linq und Lambda Expressions. Der Datensatz heißt developers.
+
+- 
+// e steht hier für Employee.
+foreach (var developer in developers.Where(e => e.Name.Length == 5)
+                                                 .OrderBy(e => e.Name))
+            {
+                Console.WriteLine(developer.Name);
+            }
+
+
+w) Warum sind diese komplexen Sortier und Filtermechaniken wie in Beispiel v mit Linq häufig so einfach miteinander zu verketten? 
+
+- Viele Linq Operatoren erwarten ein IEnumerable<T> Objekt als Parameter. Durch Linq manipulierte und zurückgegebe 
+Objekte sind ebenfalls häufig vom Typ IEnumerable<T>.
+Darum sind diese Verkettungen der Sortier-, Filter-, Grouping- und Joining Methoden so einfach, da sie als Extension Methods 
+der IEnumable<T> Schnittstelle implementiert wurden und so fast beliebig miteinander kombinierbar sind.
+
+
+                                    }
