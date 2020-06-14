@@ -1,0 +1,135 @@
+﻿a) Welchen Typen verlangen viele Linq Operatoren bzw. der Where-Operator als Argument ?
+- einen Func Type.
+
+b) Was sind Delegaten?
+- Delegaten sind Variablen die einen Zeiger auf Methoden haben. Damit können Methoden als Variablen gespeichert werden.
+
+c) Was und wofür ist der Func Type? Erkläre den Func Type und seine Syntax an einem Beispiel.
+- Der Func Type soll das Arbeiten mit Delegaten vereinfachen. Der Func Type ist selbst ein Delegate und kann Methoden speichern bzw. kapseln,
+die mindestens einen Rückgabewert haben. Bei der Deklarierung eines Func Types ist der Rückgabewert immer der letzte Parameter der generischen Typeparameterklammer.
+Vorangestellte Typeparameter sind die Übergabeargumente der zu speichernden Methode. 
+
+z.B. dieser Func Type verlangt Methoden mit zwei int als Übergabewert und einen int als Rückgabewert:
+Func<int, int, int> f;
+
+d) Wieviel überladungen hat Func und wieviele out Parameter hat jede Überladung?
+- Func hat 17 Überladungen, weil man viele verschiedene Methoden mit bis zu 16 Argumente unterstützen möchte. Der out Parameter bzw. der Rückgabewert
+einer Methode, die in Func Variable gekapselt wird ist aber immer nur einer. 
+
+e) Schreibe eine Intellisense Syntax Deklarierung von einer Func Überladung, die dir in Visualstudio vorgeschlagen wird für 2 in Parameter und einem out Parameter.
+Func<in T1, T2, out TResult>
+
+f) Wie nennt man die Argumente in der spitzen Klammern bei dieser Func Deklarierung von f: 
+Func<int, int> f;
+
+- generische Typeparameter
+
+g) Die generischen Type Parameter eines func Types beschreiben was?
+- die Parameter und den Rückgabetypen einer Methode.
+
+h) Wie kannst du ganz einfach mit Hilfe von Visual Studio diese benannte Methode namens Square automatisch mit den passenden Parametern und Rückgabetypen implementieren um f zu gereichen, wenn du sie einfach so dieser func zuweist
+ohne sie bereits implementiert zu haben:
+
+Func<int, int> f = Square;
+
+- STRG + . Taste drücken und die Methode generieren lassen.
+
+
+h) Mit func und Linq zu arbeiten dafür bevorzugst du welche Technik im Gegensatz zu benannten Methoden?
+- Lambda Ausdrücke
+
+
+i) Schreibe einen func namens Square mit Lamda Ausdruck der auf eine Methode zeigt als Lambda Ausdruck, welche einen Integer empfängt und diesen integer zum Quadrat zurückgibt.
+Schreibe den func an die Konsole.
+
+- 
+Func<int, int> square = x => x * x;
+Console.WriteLine(square);
+
+j) Erkläre diesen Func:
+
+Func<int, int> square = x => x * x;
+
+- Mit dem Keyword Func deklarieren wir dass wir einen Func Typen erstellen wollen. In den generischen Typparametern des Func bestimmen wir dass dieser Func
+auf Methoden zeigen soll, die einen Integer als eingehenden Parameter empfängt und einen Integerwert zurückgibt. Wir benennen den Func mit dem Namen
+square. Hier klein geschrieben, (weil keine benannte Methode? oder Lamdasyntax? oder aufgrund des internal keywords vor dem Func Keyword? oder vielleicht
+auch klein, wie bei einer lokalen Variable mit var?).
+
+Wir weisen der Func Variablen namens square einen Lamda-Ausdruck zu, die wie eine anonyme Methode funktioniert. Der Eingabeparameter vor dem Lambda GoesTo Ausdruck
+wird nach dem Lambda GoesTo mit sich selbst mal genommen und liefert das Ergebnis als Integer. 
+
+k) Schreibe eine Func Variable namens add, die zwei Integer empfängt und das nach einer Addition als Integer zurückgibt. Verwende ausschließlich Lamda Ausdrücke
+und keine benannte Methode Technik.
+
+Func<int, int, int> add = (x, y) => x + y;
+
+
+l) Du hast diese beiden FuncTypen:
+
+Func<int, int> square = x => x * x;
+Func<int, int, int> add = (x, y) => x + y;
+
+Addiere 3 und 5 und danach quadriere das Ergebnis und gib das Ergebnis an der Konsole aus. Verwende dafür den add und den square Func Typen.
+Wie lautet der Command um alle diese Operationen als Einzeiler kurz und prägnant aufzurufen?
+
+- Console.WriteLine(square(add(3, 5)));
+
+
+m) Eine dieser drei statements ist nicht gültig. Welches statemet ist falsch:
+
+1) Func<int, int, int> add = (int x, int y) => x + y;
+2) Func<int, int, int> add = (int x, double y) => x + y;
+3) Func<int, int, int> add = (x, y) => x + y;
+
+- 2) ist falsch! Der Datentyp einer der Übergabeparameter passt nichht zu den Typeparameter 
+1) ist gültig: Der Datentyp der Übergabeparameter passt zu den Typeparametern der Func Deklaration.
+3) ist gültig: Es kann auf die explizite Benennung der Datentypen bei den Übergabeparametern verzichtet werden.
+Der C# Compiler weiß durch die Typeparameter von selbst welche Datentypen verlangt werden und daher
+müssen diese nicht noch einmal explizit angegeben werden. Dies alles trägt zur ökonomischen Syntax von
+Lambda Ausdrücken bei. Prüfung auf starke Typisierung findet trotzdem statt.
+
+
+o) Kann der Lambda GoesTo Operator auch auf einen Methodenbody mit geschwungener Klammer zeigen?
+Ja,
+
+p) Refaktorisiere diese Methode zu einer Methode mit geschwungener Klammersyntax. Was unterscheidet sich noch 
+neben der geschwungenen Klammer bei der Syntax?
+   Func<int, int, int> add = (x, y) => x + y;
+
+   - Sobald der Lambda GoesTo Operator auf eine Methodenimplementierung mit geschwungener Klammer zeigt musst du 
+   das return Keyword hinzufügen. Die geschwungen Klammer muss mit einem Semikolon beendet werden. 
+   Je nach Anwendungsfall kann es Sinn machen auf die kurze einzeilige Lambdasyntax zu verzichten um z.B. 
+   mehr Typen der Methode hinzuzufügen.
+
+     Func<int, int> add = (x, y) =>
+     {
+        int temp = x + y;
+        return temp;
+     };
+
+q) Welchen weiteren Delegatentypen kennst du, der sich ganz ähnlich wie Func verhält?
+
+- Action
+
+r) Was wird weit mehr im Zusammenhang mit Linq verwendet: Func oder Action?
+- Func
+
+s) Wie unterscheidet sich der Delegatetyp Action von Func?
+- Ein Action Delegate gibt auschließlich void zurück. Darum sind die generischen Typeparameter eines Actiondelegates
+ausschließlich die eingehenden Übergabeparameter der hinzugefügten Methode.
+
+t) Um eine Zahl an der Konsole auszugeben kann es sich lohnen eine Action zu verwenden, da der Rückgabewert von Console.WriteLine
+void ist. Implementiere eine Action die eine übergebene Ganzzahl an der Konsole ausgibt.
+
+-
+            Action<int> write = x => Console.WriteLine(x);
+            write(9);
+
+u) Du hast zwei Func Delegaten von denen einer zwei Ganzzahlen addiert mit dem Namen add und der andere Delegate namens
+square quadriert eine übergebene Ganzzahl. Du hast weiterhin ein Action Delegate namens write welcher eine übergebene Ganzzahl an der
+Konsole ausgibt. Schreibe den Aufruf der Delegaten um zwei eingegebene Zahlen zu addieren um die Summe dann zu quadrieren und das
+Ergebnis an der Konsole auszugeben.
+
+- 
+write(square(add(3, 6)));
+
