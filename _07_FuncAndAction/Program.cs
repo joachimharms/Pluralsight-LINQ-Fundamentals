@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace _07_FuncAndAction
 {
@@ -64,6 +63,7 @@ namespace _07_FuncAndAction
             write(square(add(3, 5)));
 
             //// ***Teil 3***
+            Console.WriteLine("\n***Filtering and sorting***");
             foreach (var developer in developers)
             {
                 Console.WriteLine(developer.Name);
@@ -74,6 +74,36 @@ namespace _07_FuncAndAction
                                                  .OrderBy(e => e.Name))
             {
                 Console.WriteLine(developer.Name);
+            }
+
+            //// Teil 4 var keyword.
+            Console.WriteLine("\n***var keyword***");
+
+            // In Linq wird das keyword häufig verwendet.
+            var name = "Scott";
+            var x = 3.0;
+            var y = 2;
+            var z = x * y;
+
+            // Das keyword var bedeutet nicht etwa dass wir dadurch dynamische Typisierung
+            // oder eine ähnliche Technik verwenden. Die Variable ist trotzdem stark typisiert.
+            // Die starke Typisierung in C# bleibt weiterhin eingehalten. Der Compiler kann
+            // sich den Typ einer Variablen automatisch ableiten. So können wir auf den Typen
+            // testen:
+            // All lines print "TRUE".
+            Console.WriteLine(name is string);
+            Console.WriteLine(x is double);
+            Console.WriteLine(y is int);
+            Console.WriteLine(z is double);
+
+            // 5. Teil Query Syntax Einführung. Die obige foreach Schleif kann so etwas
+            // lesbarer gemacht werden:
+            var query = developers.Where(e => e.Name.Length == 5)
+                                   .OrderBy(e => e.Name);
+
+            foreach (var employee in query)
+            {
+                Console.WriteLine(employee.Name);
             }
         }
 

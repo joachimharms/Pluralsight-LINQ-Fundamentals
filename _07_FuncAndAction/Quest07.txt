@@ -154,4 +154,35 @@ Darum sind diese Verkettungen der Sortier-, Filter-, Grouping- und Joining Metho
 der IEnumable<T> Schnittstelle implementiert wurden und so fast beliebig miteinander kombinierbar sind.
 
 
-                                    }
+x) In Linq wird das keyword häufig verwendet. Prüfe folgenden Code auf seine Typen und lasse dir True an der Console ausgeben für jede richtige Typenprüfung.
+            var name = "Scott";
+            var x = 3.0;
+            var y = 2;
+            var z = x * y;
+
+- 
+    // All lines print "TRUE".
+            Console.WriteLine(name is string);
+            Console.WriteLine(x is double);
+            Console.WriteLine(y is int);
+            Console.WriteLine(z is double);
+
+
+y) Solltest du var viel verwenden?
+
+- Es spricht nichts dagegegen var für jede lokale Variable zu benutzen.
+Manche sagen sie verwenden var nur wenn der Typ darin eindeutig aus 
+der rechten Seite der Zuweisung ersichtlich ist. Andere verwenden 
+var für jede lokale Variable.
+
+
+z) Kannst du eine Variable mit var deklarieren ohne ihr einen Wert zuzuweisen?
+- Nein, var kann nur bei der Initialisierung einer Variable bei einer Zuweisung 
+verwendet werden, da ansonsten der C# Compiler den Typen nicht ableiten kann.
+
+za) Neben stark typisierten Sprachen wie C# gibt es noch weitere mit anderen 
+Typisierungen. Nenne einige Typisierungsarten.
+- loose typing
+- weak typing
+- dynamic typing
+
